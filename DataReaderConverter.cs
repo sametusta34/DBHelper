@@ -26,6 +26,7 @@ namespace DBHelper
         {
             public int Index;
             public PropertyInfo Property;
+
         }
 
         private Mapping[] _mappings;
