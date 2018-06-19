@@ -155,8 +155,12 @@ namespace DBHelper
 
         public T ExecuteScalar<T>(DbCommand command, Converter<object, T> converter)
         {
-
+            if (connection.State == System.Data.ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             var value = command.ExecuteScalar();
+
             return converter(value);
         }
         public T ExecuteScalar<T>(DbCommand command)
